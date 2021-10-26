@@ -1,0 +1,237 @@
+.footer-box
+{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    background-color: #00C37A;
+    padding: 30px;
+    margin-top: 20px;
+}
+.c
+{
+    width: 100%;
+    background-color: #30383D;
+    font-family: "K2D", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: 0.025em;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 10px;
+}
+.footer
+{
+    width: 1200px;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    font-family: "K2D", sans-serif;
+}
+.footer__left
+{
+    width: 770px;
+    height: 380px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.footer__left-top
+{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.footer__left-bot
+{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.newsletter
+{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+}
+.newsletter__input
+{
+    height: 40px !important;
+    width: 400px !important;
+}
+.newsletter__button
+{
+    width: 270px;
+    height: 40px;
+    color: white;
+    font-size: 24px;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    background-color: #F26065;
+    border: none;
+}
+.footer__about
+{
+    display: flex;
+    flex-direction: column;
+    width: 430px;
+}
+.footer__about-text
+{
+    color: white;
+    font-size: 18px;
+    letter-spacing: 0.05em;
+    margin-top: 10px;
+}
+.details
+{
+    display: flex;
+    flex-direction: column;
+    width: 270px;
+    color: white;
+    font-size: 18px;
+    letter-spacing: 0.025em;
+}
+.details__line
+{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+}
+.details__text
+{
+    margin-left: 5px;
+}
+.footer__right
+{
+    width: 345px;
+    height: 380px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.footer__header
+{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    letter-spacing: 0.025em;
+    color: white;
+}
+.footer__input
+{
+    height: 35px;
+    width: 100%;
+    border: none;
+    background: white;
+    border-radius: 2px;
+    padding: 5px;
+    padding-left: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 0.05em;
+    color: rgba(0, 0, 0, 0.548);
+    cursor: pointer;
+}
+.footer__input::placeholder
+{
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 0.05em;
+    color: rgba(0, 0, 0, 0.35);
+    transition: color 100ms ease-in-out;
+}
+.footer__input:hover::placeholder
+{
+    color: rgba(0, 0, 0, 0.548);
+}
+.footer__input--message
+{
+    height: 170px;
+    resize: none;
+}
+.footer__input--button
+{
+    color: #00C37A;
+}
+@media screen and (max-width: 1190px)
+{
+    .footer
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .footer__left
+    {
+        height: 280px;
+    }
+    .footer__right
+    {
+        width: 770px;
+        margin-top: 10px;
+    }
+}
+@media screen and (max-width: 900px)
+{
+    .footer__header
+    {
+        font-size: 26px;
+    }
+}
+@media screen and (max-width: 790px)
+{
+    .footer__right
+    {
+        width: 100%;
+    }
+    .footer__left
+    {
+        height: auto;
+        flex-direction: column;
+        width: 100%;
+    }
+    .footer__left-top
+    {
+        height: auto;
+        flex-direction: column;
+        width: 100%;
+    }
+    .footer__left-bot
+    {
+        height: auto;
+        flex-direction: column;
+        width: 100%;
+    }
+    .newsletter
+    {
+        flex-direction: column;
+    }
+    .newsletter__input
+    {
+        height: 40px !important;
+        width: 100% !important;
+    }
+    .newsletter__button
+    {
+        width: 100%;
+        margin-top: 10px;
+    }
+    .footer__about
+    {
+        width: 100%;
+    }
+    .footer__header
+    {
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+    .footer__input
+    {
+        margin-bottom: 10px;
+    }
+}
