@@ -15,7 +15,7 @@
         <link href="https://fonts.googleapis.com/css?family=K2D:500,600,700|Lato&display=swap" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
         <script src="js/nav.js"></script>
-        <script src="js/render.js"></script>
+        <script src="js/shop.js"></script>
         <script src="js/cart_state.js"></script>
         <script src="js/cart.js"></script>
         <style>

@@ -2,13 +2,10 @@ var ikona="";
 var pages="";
 var x=0;
 var books_count = 2;
-var q1 = "call p_wyswietl_przedzial(1,2)";
+var q1 = "call p_wyswietl_przedzial(1,6)";
 document.onload = new function()
 {
-	
-	if(x==0)
-	{
-		function init2(q1)
+	function init2(q1, element)
 		{
 			$.ajax({
 				type: "POST",
@@ -24,11 +21,21 @@ document.onload = new function()
 						ikona = ikona + '<div class="book"><div class="book-left-site"><div class="book-left-site__title">'+tab[i].Tytul+'</div><div class="book-left-site__author">'+tab[i].NazwiskoAutora+' '+tab[i].ImieAutora+'</div><div class="book-left-site__price">'+tab[i].Cena+' zł</div><div id="book_'+tab[i].IDKsiazki+'" class="book-left-site__more">Dowiedz się więcej...</div></div><img src="'+tab[i].ZdjecieKsiazki+'" width="100" height="150"></div>';
 					}
 
-					document.getElementById("shop_hook").innerHTML = ikona;
+					document.getElementById(element).innerHTML = ikona;
 				}
 			});
 		}
-		init2(q1);
+	if(window.location.href == "http://localhost:8080/simple_shop/index.php")
+	{
+		init2(q1, "books_hook");
+	}
+
+	if(x==0)
+	{
+		if(window.location.href == "http://localhost:8080/simple_shop/shop.php")
+		{
+			init2(q1, "shop_hook");
+		}
 	}
 	x++;
 };
