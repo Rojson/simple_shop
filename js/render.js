@@ -1,20 +1,26 @@
 var ikona = "";
+var q = "call p_wyswietl_przedzial(1,6)";
 document.onload = new function () {
-	$.ajax({
-		type: "GET",
-		url: "js/show_json.php",
-		dataType: "json",
-		success: function (data) {
-			var tab = JSON.parse(JSON.stringify(data));
+	function init(q)
+	{
+		$.ajax({
+			type: "POST",
+			url: "js/test.php",
+			data: { id: q },
+			dataType: "json",
+			success: function (data) {
+				var tab = JSON.parse(JSON.stringify(data));
 
-			for (var i = 0; i < tab.length; i++) {
-				ikona = ikona + '<div class="book"><div class="book-left-site"><div class="book-left-site__title">'+tab[i].Tytul+'</div><div class="book-left-site__author">'+tab[i].NazwiskoAutora+' '+tab[i].ImieAutora+'</div><div class="book-left-site__price">'+tab[i].Cena+' zł</div><div id="book_'+tab[i].IDKsiazki+'" class="book-left-site__more">Dowiedz się więcej...</div></div><img src="'+tab[i].ZdjecieKsiazki+'" width="100" height="150"></div>'
-				console.log(tab[i].IDKsiazki);
+				for (var i = 0; i < tab.length; i++) {
+					ikona = ikona + '<div class="book"><div class="book-left-site"><div class="book-left-site__title">'+tab[i].Tytul+'</div><div class="book-left-site__author">'+tab[i].NazwiskoAutora+' '+tab[i].ImieAutora+'</div><div class="book-left-site__price">'+tab[i].Cena+' zł</div><div id="book_'+tab[i].IDKsiazki+'" class="book-left-site__more">Dowiedz się więcej...</div></div><img src="'+tab[i].ZdjecieKsiazki+'" width="100" height="150"></div>'
+					console.log(tab[i].IDKsiazki);
+				}
+
+				document.getElementById("books_hook").innerHTML = ikona;
 			}
-
-			document.getElementById("books_hook").innerHTML = ikona;
-		}
-	});
+		});
+	}
+	init(q);
 }
 $(document).ready(function () {
 	$(document).delegate('.book-left-site__more', 'click', function () {
