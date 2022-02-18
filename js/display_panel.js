@@ -1,3 +1,4 @@
+//wyświetlanie listy książek
 function dp(q) {
     $.ajax({
         type: "POST",
@@ -5,7 +6,6 @@ function dp(q) {
         data: { id: q },
         dataType: 'json',
         success: function (data) {
-            var sum_price=0;
             var ik = "";
             ik+='<div class="panel__row"><div class="panel__row-header-first">Tytuł</div><div class="panel__row-header">Ilość na stanie</div><div class="panel__row-header">Zamówienie</div></div>';
             var tab = JSON.parse(JSON.stringify(data));
@@ -20,11 +20,8 @@ function dp(q) {
 
 document.onload = new function()
 {
-    
     var q = "SELECT Tytul, IloscNaMagazynie, IDKsiazki from ksiazki";
-    console.log(q);
     dp(q);
-
 }
 
 $(document).ready(function() {
@@ -37,7 +34,6 @@ $(document).ready(function() {
 			data: {id: q},
 			dataType: 'json',
 			success: function(data){
-				console.log(q);
 			}
 		});
     };
@@ -55,7 +51,6 @@ $(document).ready(function() {
                 names_id += elements[i].id+="-";
             }       
         }
-        console.log(names_id+"  "+names_value);
         execute("call p_dodaj_dostawe('"+names_id+"','"+names_value+"')");
         window.location.reload(true);
 	  });

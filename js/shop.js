@@ -25,7 +25,7 @@ document.onload = new function()
 				}
 			});
 		}
-	if(window.location.href == "http://localhost:8080/simple_shop/index.php")
+	if(window.location.href == "http://localhost:8080/simple_shop/index.php" || window.location.href == "http://localhost:8080/simple_shop/")
 	{
 		init2(q1, "books_hook");
 	}

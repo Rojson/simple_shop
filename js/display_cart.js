@@ -1,25 +1,49 @@
 var cart_list = [];
 
+//wyświetlanie elementów w koszyku
 function dp(q) {
     $.ajax({
-        type: "POST",
+        type: "GET",
         url: 'js/test.php',
         data: { id: q },
         dataType: 'json',
         success: function (data) {
+            //przygotowanie zmiennych
             var sum_price=0;
             var ik = "";
             var tab = JSON.parse(JSON.stringify(data));
+
+            //przygotowanie łańcucha do wyświetlenia
             for (var i = 0; i < tab.length; i++) {
-                ik += '<div class="shopping-cart__row"><div class="row__box row__box--photo"><img src="' + tab[i].ZdjecieKsiazki + '"></div><div class="row__box row__box--title">' + tab[i].Tytul + '</div><div class="row__box row__box--count"><button id="minus__' + tab[i].IdKsiazki + '" class="box__count-button box__count-button--red"></button><input class="amount--hook box__input" id="amount__' + tab[i].IdKsiazki + '" type="number" value="1" readonly><button id="plus__' + tab[i].IdKsiazki + '" class="box__count-button box__count-button--green"></button><input class="hidden__price" id="hidden-price__' + tab[i].IdKsiazki + '" type="hidden" value="' + tab[i].Cena + '"></div><div id="price__' + tab[i].IdKsiazki + '" class="row__box row__box--price">' + tab[i].Cena + 'zł</div><div class="row__box row__box--delete"><button id="delete__' + tab[i].IdKsiazki + '" class="box__delete-button"></button></div></div>';
+                ik += '<div class="shopping-cart__row">';
+                    ik += '<div class="row__box row__box--photo">';
+                        ik += '<img src="' + tab[i].ZdjecieKsiazki + '">';
+                    ik += '</div>';
+                    ik += '<div class="row__box row__box--title">' + tab[i].Tytul + '</div>';
+                    ik += '<div class="row__box row__box--count">';
+                        ik += '<button id="minus__' + tab[i].IdKsiazki + '" class="box__count-button box__count-button--red"></button>';
+                        ik += '<input class="amount--hook box__input" id="amount__' + tab[i].IdKsiazki + '" type="number" value="1" readonly>';
+                        ik += '<button id="plus__' + tab[i].IdKsiazki + '" class="box__count-button box__count-button--green"></button>';
+                        ik += '<input class="hidden__price" id="hidden-price__' + tab[i].IdKsiazki + '" type="hidden" value="' + tab[i].Cena + '">';
+                    ik += '</div>';
+                    ik += '<div id="price__' + tab[i].IdKsiazki + '" class="row__box row__box--price">' + tab[i].Cena + 'zł</div>';
+                    ik += '<div class="row__box row__box--delete">';
+                        ik += '<button id="delete__' + tab[i].IdKsiazki + '" class="box__delete-button"></button>';
+                    ik += '</div>';
+                ik += '</div>';
+                
+                //przygotowanie kwoty
                 sum_price+=parseFloat(tab[i].Cena);
                 document.getElementById("total__price").innerHTML=sum_price.toFixed(2)+"zł";
             }
+
+            //przekazanie łańcucha do wyświetlenia
             document.getElementById("shopping-cart-hook").innerHTML = ik;
         }
     });
 }
 
+//obliczenie kwoty dla kilku sztuk tej samej książki
 function total_price()
 {
     var x = document.getElementsByClassName("hidden__price");
@@ -28,13 +52,13 @@ function total_price()
     for(i=0; i< x.length; i++)
     {
         sum+=parseFloat(x[i].value) * parseFloat(y[i].value);
-        console.log(sum);
     }
     return sum.toFixed(2);
 }
+
 document.onload = new function()
-{
-    
+{  
+    //przygotowania zapytania, które wyświetla książki z koszyka
     var q = "SELECT Tytul, Cena, ZdjecieKsiazki, IdKsiazki FROM ksiazki WHERE IdKsiazki = ";
     
     $.ajax({
@@ -66,6 +90,7 @@ document.onload = new function()
 
 $(document).ready(function() {
 
+    //wykonanie kodu sql
     function execute(q)
 	{
 		$.ajax({
@@ -74,11 +99,11 @@ $(document).ready(function() {
 			data: {id: q},
 			dataType: 'json',
 			success: function(data){
-				console.log("works");
 			}
 		});
     };
     
+    //zamawianie książek
     $("#zamow").click(function(){   
         var elements_data = document.getElementsByClassName("input__form--hook");
         var elements_amount = document.getElementsByClassName("amount--hook");
@@ -101,7 +126,7 @@ $(document).ready(function() {
             names_amount+=x+"-";
             names_id+=y[1]+"-";
         }
-        console.log(names_id);
+        console.log(names_amount);
         
         var chceck_radio1 = document.getElementById("input_radio1");
 		var chceck_radio2 = document.getElementById("input_radio2");
@@ -133,6 +158,7 @@ $(document).ready(function() {
 
       });
     
+    //zmniejszenie liczby egzemplazy dla danej książki
     $(document).delegate('.box__count-button--red', 'click', function(){
         var amount_input = $(this).attr('id');
         var amount_input_cut = amount_input.replace("minus", "amount");
@@ -150,6 +176,7 @@ $(document).ready(function() {
         document.getElementById("total__price").innerHTML=total_price()+"zł";
     });
 
+    //zwiększenie liczby egzemplazy dla danej książki
     $(document).delegate('.box__count-button--green', 'click', function(){
         var amount_input = $(this).attr('id');
         var amount_input_cut = amount_input.replace("plus", "amount");
@@ -166,20 +193,18 @@ $(document).ready(function() {
         }
         document.getElementById("total__price").innerHTML=total_price()+"zł";
     });
-    function arrayRemove(arr, value) {
 
+    //usuwanie książki z koszyka
+    function arrayRemove(arr, value) {
         return arr.filter(function(ele){
             return ele != value;
         });
-     
      }
     $(document).delegate('.box__delete-button', 'click', function(){
         var book_id = $(this).attr('id');
         var book_id_cut = book_id.replace("delete__", "");
-
-
         var result = arrayRemove(cart_list, book_id_cut);
-        console.log(result);
+
         $.ajax({
 			type: "POST",
 			url: 'js/set_session.php',
@@ -189,7 +214,10 @@ $(document).ready(function() {
 				var tab = JSON.parse(JSON.stringify(data));
 			}
         });
+
         var qq = "SELECT Tytul, Cena, ZdjecieKsiazki, IdKsiazki FROM ksiazki WHERE IdKsiazki = ";
+
+        //wyświetlenie koszyka po usunięciu pozycji
         $.ajax({
             type: "GET",
             url: 'js/get_session.php',
@@ -197,7 +225,7 @@ $(document).ready(function() {
             success: function(data){
                 var tab = JSON.parse(JSON.stringify(data));
                 cart_list= tab;
-                console.log(cart_list);
+
                 if ( cart_list != null)
                 {
                     for(var i=0; i<tab.length; i++)
