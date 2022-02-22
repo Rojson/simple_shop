@@ -6,16 +6,22 @@
     <head>
 
         <meta charset="uft-8">
-        <link rel="stylesheet" href="css/nav.css" />
+        <link rel="stylesheet" href="css/nav_admin.css" />
         <link rel="stylesheet" href="css/reset.css" />
         <link rel="stylesheet" href="css/animation.css">
         <link rel="stylesheet" href="css/panel.css">
         <link rel="stylesheet" href="css/footer.css">
+        <link rel='stylesheet' href="css/log.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/css?family=K2D:500,600,700|Lato&display=swap" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-        <script src="js/nav.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="js/display_panel.js"></script>
+        <script src="js/log.js"></script>
         <style>
             @font-face
             {
@@ -41,121 +47,46 @@
     </head>
     
     <body>
+    <?php
+        require("registration.php");
+    ?>
+    <nav class="navbar nav navbar-expand-md fixed-top container-fluid navbar-dark">
+            <img src="css/logo.png">
 
-        <nav class="nav">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-            <section class="content">
-
-                <div class="content__logo">
-
-                    <img class="content__logo--img" src="graphic/logo.png">
-
-                </div>
-
-                <span>
-
-                    <a href="index.php">
-                        <div class="content__option">
-                            Główna
-                        </div>
-                    </a>
+            <div id="collapsibleNavbar" class="justify-content-end collapse navbar-collapse">
+                <div class="navbar-nav horizontal-container nav-container__right-side">
+                    <a href="panel.php" class="pointer nav-active">Zamawianie</a>
+                    <a href="add.php" class="pointer">Dodawanie </a>
+                    <?php
+                        if(isset($_SESSION['username']))
+                        { 
+                            echo '<span class="logged_user">#'.$_SESSION['username'].'</span>';
+                        }else
+                        {
+                            echo '<span id="toggle_log" class="nav-button nav-button__first-button pointer">Zaloguj się</span>';
+                        }
+                    ?>
+                    <span class="nav-sep"></span>
+                    <?php
+                        if(isset($_SESSION['username']))
+                        { 
+                            echo '<form action="" method="POST">';
+                            echo '<input type="submit" name="logout" class="nav-button pointer" value="Wyloguj się">';
+                            echo '</form>';
+                        }else
+                        {
+                            echo '<span id="toggle_sign" class="nav-button pointer">Zarejestruj się</span>';
+                        }
+                    ?>
                     
-                    <a href="shop.php">
-                        <div class="content__option">
-                            Sklep
-                        </div>
-                    </a>
-
-                    <a href="sale.php">
-                        <div class="content__option content__option--actual">
-                            Promocje
-                        </div>
-                    </a>
-
-                    <div class="content__option">
-                        Kontakt
-                    </div>
-
-
-                    <a href="cart.php">
-                        <div class="content__button">
-                            <i class="demo-icon icon-basket">&#xe800;</i><div id="shopping-cart-menu">0</div>
-                        </div>
-                    </a>
-
-                </span>    
-
-                <div class="mobile-menu">
-
-                    <div class="mobile-menu__element"></div>
-
                 </div>
-
-            </section>
-
-        </nav>
-
-        <nav class="mobile-nav">
-            
-            <a href="cart.php">
-                <div class="mobile-top">
-
-                    <div class="mobile-top__cart">
-
-                        <div id="cart-state" class="mobile-top__count">
-
-                        0
-
-                        </div>
-
-                    </div>
-
-                </div>
-            </a>
-
-            <div class="mobile-bot">
-
-                <a href="index.php">
-                    <div class="mobile-bot__position">
-
-                        <i class="demo-icon icon-home position__icon">&#xe805;</i>
-                        <span class="position__text">Główna</span>
-                        <span class="position__arrow">></span>
-
-                    </div>
-                </a>
-
-                <a href="shop.php">
-                    <div class="mobile-bot__position">
-
-                        <i class="demo-icon icon-basket position__icon">&#xe800;</i>
-                        <span class="position__text">Sklep</span>
-                        <span class="position__arrow">></span>
-
-                    </div>
-                </a>
-
-                <a href="sale.php">
-                    <div class="mobile-bot__position mobile-bot__position--actual">
-
-                        <i style="margin-left: 3px; margin-right: 8px;" class="demo-icon icon-fire-1 position__icon position__icon--actual">&#xe807;</i>
-                        <span class="position__text position__text--actual">Promocje</span>
-                        <span class="position__arrow position__arrow--actual">></span>
-
-                    </div>
-                </a>
-
-                <div class="mobile-bot__position">
-
-                    <i class="demo-icon icon-email position__icon">&#xe801;</i>
-                    <span class="position__text">Kontakt</span>
-                    <span class="position__arrow">></span>
-
-                </div>
-
             </div>
 
-        </nav>
+    </nav>
 
         <div class="header-box">
 

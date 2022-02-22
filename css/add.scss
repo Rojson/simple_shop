@@ -1,0 +1,243 @@
+$primary_color:  #fff;
+$bgcolor: #fff;
+$blue:#00C37A;
+.container-lg
+{
+    margin-top:60px !important;
+}
+.row
+{
+    padding-top: 20px;
+}
+.cols
+{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    color: #8395A7;
+    gap: 10px;
+    input
+    {
+        border: 2px solid rgba(131, 149, 167, 0.35);
+        box-sizing: border-box;
+        border-radius: 5px;
+        background-color: $primary_color;
+        width: 100%;
+        height: 40px;
+    }
+    textarea
+    {
+        border: 2px solid rgba(131, 149, 167, 0.35);
+        box-sizing: border-box;
+        border-radius: 5px;
+        background-color: $primary_color;
+        width: 100%;
+        height: 300px;
+        color: #8395A7 !important;
+        padding: 5px;
+    }
+    #tytul
+    {
+        color: #8395A7 !important;
+        padding: 5px;
+    }
+    #image
+    {
+        background-color: $blue;
+        content: "";
+        background: none;
+    }
+}
+select
+{
+    background: #465160;
+    border: 2px solid #465160;
+    box-sizing: border-box;
+    border-radius: 5px;
+    width: 100%;
+    height: 40px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    color: #8395A7;
+}
+select:active
+{
+    outline: none;
+}
+.submit
+{
+    background-color: $blue !important;
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 20px;
+    transition: 200ms all ease-in-out;
+}
+.submit:hover
+{
+    color: $blue;
+    background-color: white !important;
+}
+.checkbox
+{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+.search-box__checkbox
+{
+    width: 20px;
+    height: 20px;
+    border: 2px solid $blue;
+    border-radius: 2px;
+    position: relative;
+    transition: 50ms background-color ease-in-out;
+}
+.radius
+{
+    border-radius: 100%;
+}
+.search-box__checkbox::before
+{
+    width: 12px;
+    height: 2px;
+    background-color: $blue;
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: 2px;
+    transition: 100ms all ease-in-out;
+}
+.search-box__checkbox::after
+{
+    width: 2px;
+    height: 12px;
+    background-color: $blue;
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 7px;
+    transition: 100ms all ease-in-out;
+}
+.search-box__row:hover .search-box__checkbox
+{
+    background-color: $blue;
+}
+.search-box__row:hover .search-box__checkbox::after
+{
+    background-color: white;
+}
+.search-box__row:hover .search-box__checkbox::before
+{
+    background-color: white;
+}
+.checkbox:checked ~ .search-box__checkbox
+{
+    background-color: $blue;
+}
+.checkbox:checked ~ .search-box__checkbox::before
+{
+    background-color: white;
+    height: 3px;
+    transform: rotate(-55deg);
+    left: 3px;
+}
+.checkbox:checked ~ .search-box__checkbox::after
+{
+    background-color: white;
+    height: 6px;
+    width: 3px;
+    transform: rotate(-45deg);
+    top: 7px;
+    left: 3px;
+}
+.search-box__text
+{
+    letter-spacing: 0.05em;
+    font-size: 18px;
+    margin-left: 10px;
+    font-style: normal;
+    font-weight: normal;
+}
+.search-box__row
+{
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+}
+.search-box__row-last
+{
+    margin-left: 0px;
+}
+.fileUpload {
+	background: $blue;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	color: #fff;
+	font-size: 1em;
+	font-weight: bold;
+	margin: 1.25em auto;/*20px/16px 0*/
+	overflow: hidden;
+	padding: 0.875em;/*14px/16px*/
+	position: relative;
+	text-align: center;
+    width: 120px;
+    transition: 200ms;
+   cursor: pointer;
+}
+.fileUpload2 {
+	background: rgb(67, 115, 236);
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	color: #fff;
+	font-size: 1em;
+	font-weight: bold;
+	margin: 1.25em auto;/*20px/16px 0*/
+	overflow: hidden;
+	padding: 0.875em;/*14px/16px*/
+	position: relative;
+	text-align: center;
+    width: 120px;
+    transition: 200ms;
+   cursor: pointer;
+}
+.fileUpload:hover, .fileUpload:active, .fileUpload:focus {
+    background: rgb(67, 115, 236);
+    transition: 200ms;
+  cursor: pointer;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    width: 148px;
+    height: 46px;
+    cursor: pointer;
+}
+
+input[type="file"] {
+    position: fixed;
+    right: 100%;
+    bottom: 100%;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}

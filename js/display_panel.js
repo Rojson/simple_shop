@@ -30,7 +30,7 @@ $(document).ready(function() {
         console.log("sd");
 		$.ajax({
 			type: "POST",
-			url: 'js/test.php',
+			url: 'js/test_order.php',
 			data: {id: q},
 			dataType: 'json',
 			success: function(data){

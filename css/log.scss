@@ -1,0 +1,125 @@
+$primary_color:  #2B3442;
+$bgcolor: #252D3A;
+$blue:#6E97FE;
+
+.log_bg
+{
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.37);
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    justify-content: center;
+    display: none;
+}
+.log_display_a
+{
+    display: none;
+}
+.log_display_b
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.box
+{
+    position: relative;
+    width: 400px;
+    height: 420px;
+    background: #252D3A;
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.25);
+    padding: 40px;
+    input
+    {
+        border: 2px solid rgba(131, 149, 167, 0.35);
+        box-sizing: border-box;
+        border-radius: 5px;
+        background-color: $primary_color;
+        width: 80%;
+        height: 45px;
+        margin-top: 24px;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        color: #8395A7;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    input::placeholder
+    {
+        color: #8395A7;
+    }
+    input:last-child
+    {
+        background-color: $blue;
+        color: #FFFFFF;
+    }
+    .input_error
+    {
+        background-color: white;
+        border: 2px solid #E66767;
+        color: #2B3442;
+    }
+    span
+    {
+        color: #E66767;
+        margin-top:5px;
+        font-weight: 500;
+    }
+}
+.logged_user
+{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    letter-spacing: 0.01em;
+    color: #6E97FE;
+    margin-left: 15px;
+}
+.x
+{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top:10px;
+    right: 10px;
+    transition: ease 250ms;
+}
+.x:hover
+{
+    cursor: pointer;
+    transform: rotate(90deg);
+}
+.x::before
+{
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 0px;
+    width: 20px;
+    height: 2px;
+    background-color: white;
+    transform: rotate(45deg);
+}
+.x::after
+{
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 0px;
+    width: 20px;
+    height: 2px;
+    background-color: white;
+    transform: rotate(-45deg);
+}
+@media only screen and (max-width: 767px) 
+{
+    .box
+    {
+        width: 100%;
+        height: 100%;
+    }
+}
