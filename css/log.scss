@@ -1,6 +1,6 @@
 $primary_color:  white;
 $bgcolor: white;
-$blue:#6E97FE;
+$blue:#00C37A;
 
 .log_bg
 {
@@ -26,10 +26,14 @@ $blue:#6E97FE;
 }
 .box
 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
+    flex-direction: column;
     width: 400px;
     height: 420px;
-    background: #252D3A;
+    background: rgb(255, 255, 255);
     box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.25);
     padding: 40px;
     input
@@ -69,6 +73,11 @@ $blue:#6E97FE;
         margin-top:5px;
         font-weight: 500;
     }
+    img
+    {
+        width: 80%;
+        height: auto;
+    }
 }
 .logged_user
 {
@@ -101,7 +110,7 @@ $blue:#6E97FE;
     left: 0px;
     width: 20px;
     height: 2px;
-    background-color: white;
+    background-color: black;
     transform: rotate(45deg);
 }
 .x::after
@@ -112,7 +121,7 @@ $blue:#6E97FE;
     left: 0px;
     width: 20px;
     height: 2px;
-    background-color: white;
+    background-color: black;
     transform: rotate(-45deg);
 }
 @media only screen and (max-width: 767px) 
