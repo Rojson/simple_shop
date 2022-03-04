@@ -76,9 +76,15 @@ $(document).ready(function() {
 			dataType: 'json',
 			success: function(data){
 				var tab = JSON.parse(JSON.stringify(data));
+				console.log(tab);
+				var autorzy = "";
+				for(var i=0;i<tab.length;i++)
+				{
+					autorzy += tab[i].ImieAutora + " " + tab[i].NazwiskoAutora + ", ";
+				}
 				document.getElementById("book-photo-price").innerHTML = "<img src='"+tab[0].ZdjecieKsiazki+"'><div class='book-details__price'>Cena: <span>"+tab[0].Cena+" zł.</span></div><div id='add-to-cart__"+tab[0].IdKsiazki+"' class='left-site__button'><i class='demo-icon icon-basket'>&#xe800;</i> Dodaj do koszyka</div>";
 				document.getElementById("right-site-title").innerHTML = tab[0].Tytul;
-				document.getElementById("right-site-author").innerHTML = tab[0].ImieAutora +" "+ tab[0].NazwiskoAutora;
+				document.getElementById("right-site-author").innerHTML = autorzy;
 				document.getElementById("right-site__type").innerHTML = "Okładka: "+tab[0].TypOkladki;
 				document.getElementById("right-site__pages").innerHTML = "Ilość stron: "+tab[0].StronyKsiazki;
 				document.getElementById("right-site__year").innerHTML ="Data wydania: "+ tab[0].DataWydaniaKsiazki;
