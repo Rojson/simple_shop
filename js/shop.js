@@ -1,7 +1,7 @@
 var ikona="";
 var pages="";
 var x=0;
-var books_count = 2;
+var books_count = 6;
 var q1 = "call p_wyswietl_przedzial(1,6)";
 document.onload = new function()
 {
@@ -50,13 +50,33 @@ $(document).ready(function() {
 			data: {id: q},
 			dataType: 'json',
 			success: function(data){
-				var ik="";
 				var tab = JSON.parse(JSON.stringify(data));
+				var ik="";
+				tab.push("x");
+				let ikona=[];
 				
-				for(var i=0; i<tab.length; i++)
+				
+				for(var i=0; i<tab.length-1; i++)
 					{
-						console.log(tab[i].IdKsiazki);
-						ik = ik  + '<div class="book"><div class="book-left-site"><div class="book-left-site__title">'+tab[i].Tytul+'</div><div class="book-left-site__author">'+tab[i].NazwiskoAutora+' '+tab[i].ImieAutora+'</div><div class="book-left-site__price">'+tab[i].Cena+' zł</div><div id="book_'+tab[i].IdKsiazki+'" class="book-left-site__more">Dowiedz się więcej...</div></div><img src="'+tab[i].ZdjecieKsiazki+'" width="100" height="150"></div>';
+						if(tab[i].IdKsiazki == tab[i+1].IdKsiazki)
+						{
+							ikona.push(tab[i].ImieAutora + " " + tab[i].NazwiskoAutora + ", ");
+						}else
+						{
+							ikona.push(tab[i].ImieAutora + " " + tab[i].NazwiskoAutora);
+							console.log(tab[i].IdKsiazki);
+
+							ik = ik  + '<div class="book"><div class="book-left-site"><div class="book-left-site__title">'+tab[i].Tytul+'</div>';
+							ik = ik  + '<div class="book-left-site__author">'
+							for(var x = 0; x<ikona.length; x++)
+							{
+								ik = ik + ikona[x];
+							}
+							ik = ik  + '</div>';
+							ik = ik  + '<div class="book-left-site__price">'+tab[i].Cena+' zł</div><div id="book_'+tab[i].IdKsiazki+'" class="book-left-site__more">Dowiedz się więcej...</div></div><img src="'+tab[i].ZdjecieKsiazki+'" width="100" height="150"></div>';
+							
+							ikona=[];
+						}
 					}
 					document.getElementById("shop_hook").innerHTML = ik;
 			}
