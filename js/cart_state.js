@@ -1,5 +1,5 @@
 //number of items, which are in cart
-/*
+
 var cart_state = [];
 $(document).ready(function() {
     $.ajax({
@@ -20,4 +20,3 @@ $(document).ready(function() {
         }
     });
 })
-*/

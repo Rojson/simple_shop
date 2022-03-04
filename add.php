@@ -18,7 +18,7 @@
     ?>
 
     <nav class="navbar nav navbar-expand-md fixed-top container-fluid navbar-dark">
-            <img src="css/logo.png">
+            <img src="graphic/logo.png">
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
@@ -145,6 +145,6 @@
         </form>
     </div>
     <div class="horizontal-container footer">
-        <img src="css/logo.png">
+        <img src="graphic/logo.png">
     </div>
 </body>

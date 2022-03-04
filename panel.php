@@ -10,7 +10,6 @@
         <link rel="stylesheet" href="css/reset.css" />
         <link rel="stylesheet" href="css/animation.css">
         <link rel="stylesheet" href="css/panel.css">
-        <link rel="stylesheet" href="css/footer.css">
         <link rel='stylesheet' href="css/log.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/css?family=K2D:500,600,700|Lato&display=swap" rel="stylesheet">
@@ -51,7 +50,7 @@
         require("registration.php");
     ?>
     <nav class="navbar nav navbar-expand-md fixed-top container-fluid navbar-dark">
-            <img src="css/logo.png">
+            <img src="graphic/logo.png">
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
@@ -94,42 +93,6 @@
 
                 <div class="header__text">
 
-                    Statystyki tygodniowe
-
-                </div>
-
-                <div class="header__separator">
-
-                </div>
-
-            </div>
-
-        </div>  
-
-        <div class="header-box">
-
-            <div class="header">
-
-                <div class="header__text">
-
-                    Statystyki
-
-                </div>
-
-                <div class="header__separator">
-
-                </div>
-
-            </div>
-
-        </div>  
-
-        <div class="header-box">
-
-            <div class="header">
-
-                <div class="header__text">
-
                     Panel zamówień
 
                 </div>
@@ -158,105 +121,8 @@
 
         </div>
 
-        <div class="footer-box">
-
-            <div class="footer">
-
-                <div class="footer__left">
-
-                    <div class="footer__left-top">
-
-                            <div class="footer__about">
-
-                                <div class="footer__header">
-                                    O nas
-                                </div>
-
-                                <div class="footer__about-text">
-                                    Zajmujemy się internetową sprzedarzą książek, podręczników oraz innych artykułów. W branży działamy już ponad 10 lat i cieszymy się nienaganną opinią wśród klientów.
-                                </div>
-
-                            </div>
-
-                            <div class="details">
-
-                                <div class="footer__header">
-                                    Dane kontaktowe
-                                </div>
-
-                                <div class="details__line">
-
-                                    <i class="demo-icon icon-phone">&#xe802;</i>
-
-                                    <div class="details__text">
-                                        33-234-25-64
-                                    </div>
-
-                                </div>
-                                
-                                <div class="details__line">
-
-                                    <i class="demo-icon icon-home">&#xe805;</i>
-    
-                                    <div class="details__text">
-                                        22- 435 Katowice, Polna 12
-                                    </div>
-    
-                                </div>
-
-                                <div class="details__line">
-
-                                    <i class="demo-icon icon-email">&#xe801;</i>
-        
-                                    <div class="details__text">
-                                        ksiazkowo@gmail.com
-                                    </div>
-        
-                                </div>                                
-
-                            </div>
-
-                    </div>
-
-                    <div class="footer__left-bot">
-
-                        <div class="footer__header">
-                            Zapisz się na newsletter
-                        </div>
-
-                        <div class="newsletter">
-
-                            <input type="text" placeholder="Adres e-mail" class="newsletter__input footer__input">
-                            <input type="submit" value="Zapisz się" class="newsletter__button">
-                            
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="footer__right">
-
-                    <div class="footer__header">
-                        Formularz kontaktowy
-                    </div>
-
-                    <input type="text" class="footer__input" placeholder="Imię i nazwisko">
-
-                    <input type="text" class="footer__input" placeholder="Adres e-mail">
-
-                    <textarea class="footer__input footer__input--message" placeholder="Treść wiadomości"></textarea>
-
-                    <input type="submit" value="<< Wyślij wiadomość >>" class="footer__input footer__input--button">
-                    
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="c">
-            © 2008-2019 Książkowo Zoo. Wszystkie prawa zastrzeżone.
+        <div class="horizontal-container footer">
+            <img src="graphic/logo.png">
         </div>
 
     </body>

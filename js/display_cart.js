@@ -2,8 +2,9 @@ var cart_list = [];
 
 //wyświetlanie elementów w koszyku
 function dp(q) {
+    console.log("fc działa");
     $.ajax({
-        type: "GET",
+        type: "POST",
         url: 'js/test.php',
         data: { id: q },
         dataType: 'json',
@@ -12,7 +13,7 @@ function dp(q) {
             var sum_price=0;
             var ik = "";
             var tab = JSON.parse(JSON.stringify(data));
-
+            console.log(tab);
             //przygotowanie łańcucha do wyświetlenia
             for (var i = 0; i < tab.length; i++) {
                 ik += '<div class="shopping-cart__row">';
@@ -68,6 +69,7 @@ document.onload = new function()
         success: function(data){
             var tab = JSON.parse(JSON.stringify(data));
             cart_list= tab;
+            console.log(cart_list);
             if ( cart_list != null)
                 {
                     for(var i=0; i<tab.length; i++)
@@ -77,6 +79,7 @@ document.onload = new function()
                         else
                         q = q + tab[i]+" OR IdKsiazki = ";
                     }
+                    console.log(q);
                     dp(q);
                 }else
                 {
