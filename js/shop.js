@@ -2,7 +2,7 @@ var ikona="";
 var pages="";
 var x=0;
 var books_count = 6;
-var q1 = "call p_wyswietl_przedzial(1,6)";
+var q1 = "call p_wyswietl_limit_ksiazek(6)";
 document.onload = new function()
 {
 	function init2(q1, element)
@@ -124,68 +124,25 @@ $(document).ready(function() {
 	});
 
 	$("#search-hook").click(function() {
-		var chceck_przygodowa = document.getElementById("chceck-przygodowa");
-		var chceck_kryminal = document.getElementById("chceck-kryminal");
-		var chceck_akcji = document.getElementById("chceck-akcji");
-		var chceck_historyczna = document.getElementById("chceck-historyczna");
-		var chceck_komedia = document.getElementById("chceck-komedia");
-
-		books_count =2; 
+		books_count =6; 
+		var markedCheckbox = document.querySelectorAll('input[type="checkbox"]:checked');  
+		
 
 		query = "SELECT ksiazki.IdKsiazki, ksiazki.TypOkladki, ksiazki.Tytul, ksiazki.ZdjecieKsiazki,ksiazki.Cena, autorzy.ImieAutora, autorzy.NazwiskoAutora FROM ksiazki INNER JOIN tworcy USING (IDKsiazki) INNER JOIN autorzy USING(IdAutora) ";
 		var ifchceck=0;
-		if (chceck_przygodowa.checked == true)
-		{
-			query += "WHERE (ksiazki.IdKategorii = 1";
-			ifchceck =1;
-		}
-		if (chceck_kryminal.checked == true)
-		{
-			if(ifchceck==1)
-			{
-				query += " OR ksiazki.IdKategorii = 2";
-			}else
-			{
-				query += "WHERE (ksiazki.IdKategorii = 2";
-				ifchceck=1;
-			}
-		}
-		if (chceck_akcji.checked == true)
-		{
-			if(ifchceck==1)
-			{
-				query += " OR ksiazki.IdKategorii = 3";
-			}else
-			{
-				query += "WHERE (ksiazki.IdKategorii = 3";
-				ifchceck=1;
-			}
-		}
-		if (chceck_historyczna.checked == true)
-		{
-			if(ifchceck==1)
-			{
-				query += " OR ksiazki.IdKategorii = 4";
-			}else
-			{
-				query += "WHERE (ksiazki.IdKategorii = 4";
-				ifchceck=1;
-			}
-		}
-		if (chceck_komedia.checked == true)
-		{
-			if(ifchceck==1)
-			{
-				query += " OR ksiazki.IdKategorii = 5";
-			}else
-			{
-				query += "WHERE (ksiazki.IdKategorii = 5";
-				ifchceck=1;
-			}
-		}
-		if(ifchceck==1)
-		query+=")";
 
+		if(markedCheckbox != null)
+		{
+			ifchceck = 1;
+			query += "WHERE ksiazki.IdKategorii IN (";
+			for(var checkbox of markedCheckbox)
+			{
+				query += checkbox.value + ",";
+			}
+			query = query.slice(0,-1);
+			query += ")";
+		}
+		
 		var chceck_radio1 = document.getElementById("radio-1");
 		var chceck_radio2 = document.getElementById("radio-2");
 		var chceck_radio3 = document.getElementById("radio-3");
@@ -223,9 +180,8 @@ $(document).ready(function() {
 			}
 		}
 
-		endofquery = "ORDER BY ksiazki.IdKsiazki LIMIT "+books_count+";";
+		endofquery = "ORDER BY ksiazki.IdKsiazki;";
 		fullquery = query + endofquery;
-
 		display_books(fullquery);		
 	});
 })

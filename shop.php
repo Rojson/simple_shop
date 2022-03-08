@@ -209,77 +209,21 @@
                         <div class="search-box__header">
                             Dostępne kategorie
                         </div>
+                        <?php
+                            require('db.php');
+                            $sql = "SELECT IdKategorii, NazwaKategorii FROM `Kategorie`";
+                            $res = mysqli_query($conn, $sql) or die(mysqli_error());
 
-                        <label class="search-box__row">
-                            
-                            <input id="chceck-przygodowa" type="checkbox" class="checkbox">
-
-                            <div class="search-box__checkbox">
-
-                            </div> 
-
-                            <div class="search-box__text">
-                                Przygodowa
-                            </div>
-
-                        </label>
-
-                        <label class="search-box__row">
-                            
-                            <input id="chceck-kryminal" type="checkbox" class="checkbox">
-
-                            <div class="search-box__checkbox">
-
-                            </div> 
-
-                            <div class="search-box__text">
-                                Kryminał
-                            </div>
-
-                        </label>
-
-                        <label class="search-box__row">
-                            
-                            <input id="chceck-akcji" type="checkbox" class="checkbox">
-
-                            <div class="search-box__checkbox">
-
-                            </div> 
-
-                            <div class="search-box__text">
-                                Akcji
-                            </div>
-
-                        </label>
-
-                        <label class="search-box__row">
-                            
-                            <input id="chceck-historyczna" type="checkbox" class="checkbox">
-
-                            <div class="search-box__checkbox">
-
-                            </div> 
-
-                            <div class="search-box__text">
-                                Historyczna
-                            </div>
-
-                        </label>
-
-                        <label class="search-box__row">
-                            
-                            <input id="chceck-komedia" type="checkbox" class="checkbox">
-
-                            <div class="search-box__checkbox">
-
-                            </div> 
-
-                            <div class="search-box__text">
-                                Komedia
-                            </div>
-
-                        </label>
-
+                            if ($res->num_rows > 0) 
+                            {
+                                while($row = $res->fetch_assoc()) 
+                                {
+                                    $id =$row["IdKategorii"];
+                                    $name =$row["NazwaKategorii"];
+                                    echo '<label class="search-box__row"><input value='.$id.' id="chceck-'.$name.'" type="checkbox" class="checkbox"><div class="search-box__checkbox"></div><div class="search-box__text">'.$name.'</div></label>';
+                                }
+                            }
+                        ?>
                     </span>
 
                     <span>
